@@ -1,15 +1,19 @@
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, Flex } from '@chakra-ui/react'
+import Navbar from 'components/Navbar'
 import Head from 'next/head'
 import theme from '../../styles/theme'
 
-const Website = ({ Component, pageProps, router }) => {
+const Website = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
       <Head>
         <meta name="viewport" content="width=device-with, initial-scale = 1" />
-        <title>Cloth Shop</title>
+        <title>Crypto World!</title>
       </Head>
-      <Component {...pageProps} key={router.route} />
+      <Flex>
+        <Navbar />
+        <Component {...pageProps} />
+      </Flex>
     </ChakraProvider>
   )
 }

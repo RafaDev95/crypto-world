@@ -1,3 +1,5 @@
-const Home = () => <h1>Aqui é a home</h1>
+const Index = () => {
+  return <></>
+}
 
-export default Home
+export default Index
