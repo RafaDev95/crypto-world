@@ -32,16 +32,17 @@ const socials = [
 ]
 
 const Footer = () => {
-  const bgToggle = useColorModeValue('black', 'white')
-  const colorToggle = useColorModeValue('white', 'black')
+  const toggleBg = useColorModeValue('black', 'white')
+  const toggleColor = useColorModeValue('white', 'black')
   // bg={useColorModeValue('#e2e8f0', '#161c25')}
 
   return (
     <Container
       maxW="100%"
+      my="1rem"
       // borderTop={`1px solid ${useColorModeValue('black', 'white')}`}
     >
-      <Flex alignItems="center" justifyContent="space-around" p="1rem">
+      <Flex alignItems="center" justifyContent="space-around" p="1rem" h="90px">
         <NextLink passHref href="/">
           <Link
             fontSize="1.1rem"
@@ -55,6 +56,7 @@ const Footer = () => {
           {socials.map(social => (
             <NextLink key={social.title} passHref href={social.link}>
               <Link
+                target="_blank"
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
@@ -62,10 +64,10 @@ const Footer = () => {
                 p=".4rem"
                 rounded="md"
                 fontSize="1rem"
-                border={`1px solid ${bgToggle}`}
+                border={`1px solid ${toggleBg}`}
                 _hover={{
-                  bg: `${bgToggle}`,
-                  color: `${colorToggle}`
+                  bg: `${toggleBg}`,
+                  color: `${toggleColor}`
                 }}
               >
                 {social.icon} <Text ml=".7rem">{social.title}</Text>

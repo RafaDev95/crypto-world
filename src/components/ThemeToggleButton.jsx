@@ -1,10 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { IconButton, useColorMode, useColorModeValue } from '@chakra-ui/react'
-
-import { BiMoon, BiSun } from 'react-icons/bi'
+import { useColorMode, useColorModeValue, Button } from '@chakra-ui/react'
 
 const ThemeToggleButton = () => {
   const { toggleColorMode } = useColorMode()
+  const { colorMode } = useColorMode()
 
   return (
     <AnimatePresence exitBeforeEnter initial={false}>
@@ -16,12 +15,16 @@ const ThemeToggleButton = () => {
         exit={{ y: 20, opacity: 0 }}
         transition={{ duration: 0.2 }}
       >
-        <IconButton
-          aria-label="Toggle Theme"
-          colorScheme={useColorModeValue('purple', 'yellow')}
-          icon={useColorModeValue(<BiMoon />, <BiSun />)}
+        <Button
           onClick={toggleColorMode}
-        />
+          aria-label="Toggle Theme"
+          size="sm"
+          fontSize="1.2rem"
+          bg={useColorModeValue('#7792b3', '#042747')}
+          variant="none"
+        >
+          {colorMode === 'dark' ? '🌜' : '🌞'}
+        </Button>
       </motion.div>
     </AnimatePresence>
   )
