@@ -4,20 +4,24 @@ import { mode } from '@chakra-ui/theme-tools'
 const styles = {
   global: props => ({
     body: {
-      bg: mode('#f9f9f9', '#202023')(props)
+      bg: mode('#e2e8f0', '#030311')(props),
+      color: mode('black', 'white')(props)
     }
   })
 }
+
+//'#161c25'
+// '#202023'
 
 const components = {
   Heading: {
     variants: {
       'section-title': {
         textDecoration: 'underline',
-        fontSize: 20,
+        letterSpacing: '2px',
+        fontSize: 23,
         textUnderLineOffset: 6,
-        textDecorationColor: '#525252',
-        textDecorationThickness: 4,
+        textDecorationColor: 'white',
         marginTop: 3,
         marginBottom: 4
       }
@@ -32,18 +36,27 @@ const components = {
 }
 
 const fonts = {
-  heading: " 'M PLUS ROUNDED 1c' "
+  body: " 'Raleway', sans-serif ",
+  heading: " 'Montserrat', sans-serif"
 }
 
 const colors = {
   glassTeal: '#88ccca',
   textPrimary: '#000',
-  bgPrimary: '#fff',
+  bgDark: '#161c25',
+  bgLight: '#f9f9f9',
   bgSecondary: '#F9F9F9',
   blue2: '#0071db',
   lightBlue: '#e6f7ff',
   border: '#d9d9d9',
-  darkModePanel: '#3e3e4140'
+  darkModePanel: '#3e3e4140',
+  a: '#040609',
+  b: '#020306',
+  c: '#3540b6',
+  d: '#46495b',
+  e: '#788794',
+  f: '#',
+  g: '#'
 }
 
 const config = {
