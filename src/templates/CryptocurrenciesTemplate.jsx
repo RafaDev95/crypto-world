@@ -15,7 +15,7 @@ import {
 
 import { useState, useEffect } from 'react'
 
-const CryptocurrenciesTemplate = ({ coins, home, noSearch }) => {
+const CryptocurrenciesTemplate = ({ coins, home, homeCoins }) => {
   const toggleBg = useColorModeValue('boxLM', '#073968')
   const toggleBorder = useColorModeValue('black', '#1280e7')
   const togglePlaceholderText = useColorModeValue('black', 'white')
@@ -23,11 +23,7 @@ const CryptocurrenciesTemplate = ({ coins, home, noSearch }) => {
   const [searchCoin, setSearchCoin] = useState()
   const [cryptos, setCryptos] = useState(coins)
 
-  const coinsForMapping = cryptos.length === 0 ? coins : cryptos
-
-  const topTenCoins = coins.slice(0, 10)
-
-  console.log(topTenCoins)
+  const coinsForMapping = cryptos?.length === 0 ? coins : cryptos
 
   useEffect(() => {
     const filteredCoin = coins?.filter(coin =>
@@ -61,7 +57,7 @@ const CryptocurrenciesTemplate = ({ coins, home, noSearch }) => {
 
       <SimpleGrid columns={4} spacing="10px">
         {home
-          ? topTenCoins?.map(coin => (
+          ? homeCoins?.map(coin => (
               <NextLink key={coin.uid} href={`/crypto/${coin?.uid}`} passHref>
                 <Box
                   bg={toggleBg}

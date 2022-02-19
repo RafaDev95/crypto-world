@@ -7,13 +7,25 @@ const cryptocurrencies = ({ coins }) => {
 
 export default cryptocurrencies
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const coinsResponse = await fetchCoins
-  const json = await coinsResponse.json()
+  const json = await coinsResponse?.json()
 
   return {
+    revalidate: 60 * 60 * 5,
     props: {
       coins: json?.data.coins
     }
   }
 }
+
+// export async function getServerSideProps() {
+//   const coinsResponse = await fetchCoins
+//   const json = await coinsResponse.json()
+
+//   return {
+//     props: {
+//       coins: json?.data.coins
+//     }
+//   }
+// }

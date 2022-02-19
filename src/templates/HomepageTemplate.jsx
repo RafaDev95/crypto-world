@@ -22,7 +22,8 @@ const HomepageTemplate = ({
   totalExchanges,
   totalMarketCap,
   total24hVolume,
-  coins
+  coins,
+  newsJson
 }) => {
   const cryptoInfos = [
     {
@@ -46,6 +47,8 @@ const HomepageTemplate = ({
       amount: total24hVolume
     }
   ]
+
+  console.log(coins)
   return (
     <Container variant="page-container" as="main" pt={0}>
       <Box bg={useColorModeValue('#394c64', '#082036')} rounded="md">
@@ -113,7 +116,7 @@ const HomepageTemplate = ({
             </Link>
           </NextLink>
         </Flex>
-        <CryptocurrenciesTemplate coins={coins} home noSearch />
+        <CryptocurrenciesTemplate homeCoins={coins} home />
 
         <Flex
           alignItems="center"

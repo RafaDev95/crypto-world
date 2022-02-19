@@ -9,7 +9,7 @@ import {
   Link
 } from '@chakra-ui/react'
 
-import { fetchCoins } from 'utils/fetchs'
+import { fetchNews, fetchTenCoins } from 'utils/fetchs'
 
 import HomepageTemplate from 'templates/HomepageTemplate'
 
@@ -19,7 +19,8 @@ const Index = ({
   totalExchanges,
   totalMarketCap,
   total24hVolume,
-  coins
+  coins,
+  newsJson
 }) => {
   return (
     <>
@@ -30,6 +31,7 @@ const Index = ({
         totalMarketCap={totalMarketCap}
         total24hVolume={total24hVolume}
         coins={coins}
+        newsJson={newsJson}
       />
     </>
   )
@@ -37,14 +39,20 @@ const Index = ({
 
 export default Index
 
-export async function getServerSideProps() {
-  const coinsResponse = await fetchCoins
-  const json = await coinsResponse.json()
-  const coinsData = json?.data.stats
+export async function getStaticProps() {
+  const coinsResponse = await fetchTenCoins(10)
+  const coinsJson = await coinsResponse?.json()
+  const coinsData = coinsJson?.data.stats
+
+  const newsResponse = await fetchNews
+  const newsJson = await newsResponse?.json()
+  // const newsData = await newsJson?.data
 
   return {
+    revalidate: 60 * 60 * 5,
     props: {
-      coins: json?.data.coins,
+      newsJson,
+      coins: coinsJson?.data.coins,
       totalCryptocurrencies: coinsData.totalCoins,
       totalMarkets: coinsData.totalMarkets,
       totalExchanges: coinsData.totalExchanges,
@@ -53,3 +61,20 @@ export async function getServerSideProps() {
     }
   }
 }
+
+// export async function getServerSideProps() {
+//   const coinsResponse = await fetchCoins
+//   const json = await coinsResponse.json()
+//   const coinsData = json?.data.stats
+
+//   return {
+//     props: {
+//       coins: json?.data.coins,
+//       totalCryptocurrencies: coinsData.totalCoins,
+//       totalMarkets: coinsData.totalMarkets,
+//       totalExchanges: coinsData.totalExchanges,
+//       totalMarketCap: coinsData.totalMarketCap,
+//       total24hVolume: coinsData.total24hVolume
+//     }
+//   }
+// }
