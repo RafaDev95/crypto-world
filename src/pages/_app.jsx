@@ -8,6 +8,7 @@ import Fonts from 'components/Fonts'
 import Footer from 'components/Footer'
 import Navbar from 'components/Navbar'
 import ThemeToggleButton from 'components/ThemeToggleButton'
+import NextNProgress from 'nextjs-progressbar'
 
 const Website = ({ Component, pageProps }) => {
   return (
@@ -17,7 +18,7 @@ const Website = ({ Component, pageProps }) => {
         <meta name="viewport" content="width=device-with, initial-scale = 1" />
         <title>Crypto World!</title>
       </Head>
-      <Container maxW="1500px" display="flex" position="relative">
+      <Container maxW="1700px" display="flex" position="relative">
         <Box position="absolute" right="40px" top="40px">
           <ThemeToggleButton />
         </Box>
@@ -29,6 +30,13 @@ const Website = ({ Component, pageProps }) => {
           w="100%"
           mt="7rem"
         >
+          <NextNProgress
+            color="#1280e7"
+            startPosition={0.3}
+            stopDelayMs={200}
+            height={5}
+            showOnShallow={true}
+          />
           <Component {...pageProps} />
           <Footer />
         </Flex>

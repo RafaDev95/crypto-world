@@ -23,7 +23,7 @@ const HomepageTemplate = ({
   totalMarketCap,
   total24hVolume,
   coins,
-  newsJson
+  newsInfos
 }) => {
   const cryptoInfos = [
     {
@@ -48,10 +48,9 @@ const HomepageTemplate = ({
     }
   ]
 
-  console.log(coins)
   return (
     <Container variant="page-container" as="main" pt={0}>
-      <Box bg={useColorModeValue('#394c64', '#082036')} rounded="md">
+      <Box bg={useColorModeValue('boxLM', '#082036')} rounded="md">
         <Box p="1rem">
           <Heading as="h1" variant="section-title" color="white">
             Global Crypto Stats
@@ -127,13 +126,13 @@ const HomepageTemplate = ({
           <Heading variant="section-title" as="h1" fontSize="1.4rem">
             Latest Crypto News
           </Heading>
-          <NextLink href="/cryptocurrencies" passHref>
+          <NextLink href="/news" passHref>
             <Link fontSize="1.4rem" color="blueLink">
               Read more
             </Link>
           </NextLink>
         </Flex>
-        <NewsTemplate />
+        <NewsTemplate newsInfos={newsInfos} home />
       </Box>
     </Container>
   )

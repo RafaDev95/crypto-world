@@ -1,11 +1,8 @@
 import {
-  Box,
   Flex,
   Container,
   Text,
-  Heading,
   Stack,
-  IconButton,
   Link,
   useColorModeValue
 } from '@chakra-ui/react'
@@ -13,9 +10,6 @@ import {
 import NextLink from 'next/link'
 
 import { BsGithub, BsLinkedin, BsTwitter } from 'react-icons/bs'
-// https://twitter.com/RafaDev95
-// https://github.com/RafaDev95
-// https://www.linkedin.com/in/rafael-santos-830250215/
 
 const socials = [
   { title: 'Github', link: 'https://github.com/RafaDev95', icon: <BsGithub /> },
@@ -34,14 +28,9 @@ const socials = [
 const Footer = () => {
   const toggleBg = useColorModeValue('black', 'white')
   const toggleColor = useColorModeValue('white', 'black')
-  // bg={useColorModeValue('#e2e8f0', '#161c25')}
 
   return (
-    <Container
-      maxW="100%"
-      my="1rem"
-      // borderTop={`1px solid ${useColorModeValue('black', 'white')}`}
-    >
+    <Container maxW="100%" my="1rem">
       <Flex alignItems="center" justifyContent="space-around" p="1rem" h="90px">
         <NextLink passHref href="/">
           <Link

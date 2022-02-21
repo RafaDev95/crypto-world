@@ -22,7 +22,7 @@ import NextLink from 'next/link'
 const Navbar = () => {
   const router = useRouter()
 
-  const toggleBgLink = useColorModeValue('#394c64', '#1280e7')
+  const toggleBgLink = useColorModeValue('boxLM', 'boxDM')
 
   return (
     <Container h="100vh" w="350px" m={0}>
@@ -30,7 +30,12 @@ const Navbar = () => {
         <Flex p=".4rem" alignItems="center" w="100%">
           <Image boxSize="75px" alt="logo" src="/cryptologo.png" />
           <NextLink passHref href="/">
-            <Link marginLeft=".8rem" fontSize="1.5rem" color={toggleBgLink}>
+            <Link
+              marginLeft=".8rem"
+              fontSize="1.5rem"
+              color={toggleBgLink}
+              focus={{}}
+            >
               Crypto World
             </Link>
           </NextLink>

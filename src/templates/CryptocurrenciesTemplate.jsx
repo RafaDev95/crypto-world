@@ -10,14 +10,15 @@ import {
   Container,
   Box,
   useColorModeValue,
-  Input
+  Input,
+  Flex
 } from '@chakra-ui/react'
 
 import { useState, useEffect } from 'react'
 
 const CryptocurrenciesTemplate = ({ coins, home, homeCoins }) => {
-  const toggleBg = useColorModeValue('boxLM', '#073968')
-  const toggleBorder = useColorModeValue('black', '#1280e7')
+  const toggleBg = useColorModeValue('boxLM', '#001e3b')
+  const toggleBorder = useColorModeValue('black', 'boxDM')
   const togglePlaceholderText = useColorModeValue('black', 'white')
 
   const [searchCoin, setSearchCoin] = useState()
@@ -55,17 +56,17 @@ const CryptocurrenciesTemplate = ({ coins, home, homeCoins }) => {
         </>
       )}
 
-      <SimpleGrid columns={4} spacing="10px">
+      <SimpleGrid columns={{ xl: 4, lg: 3, md: 2 }} spacing="10px">
         {home
           ? homeCoins?.map(coin => (
               <NextLink key={coin.uid} href={`/crypto/${coin?.uid}`} passHref>
                 <Box
                   bg={toggleBg}
+                  h="200px"
                   rounded="md"
                   py="1rem"
                   cursor="pointer"
                   color="white"
-                  border={`1px solid ${toggleBorder}`}
                   boxShadow="md"
                   _hover={{
                     transform: 'scale(1.05)'
@@ -74,29 +75,28 @@ const CryptocurrenciesTemplate = ({ coins, home, homeCoins }) => {
                 >
                   <Stack
                     isInline
-                    justifyContent="space-around"
+                    justifyContent="space-between"
                     alignItems="center"
                     borderBottom="1px solid gray"
+                    px="2rem"
                     pb=".5rem"
                   >
-                    <Heading as="h1" fontSize=".9rem">
+                    <Heading as="h1" fontSize={{ xl: '1.2rem', md: '.9rem' }}>
                       {`${coin?.rank}. ${coin?.name}`}
                     </Heading>
                     <Avatar src={coin.iconUrl} size="sm" />
                   </Stack>
 
-                  <Stack pl="2rem" pt="1rem">
-                    <Text display="flex">
-                      Price: <Text ml=".5rem"> {millify(coin.price)}</Text>
-                    </Text>
-                    <Text display="flex">
-                      Market Cap:{' '}
-                      <Text ml=".5rem"> {millify(coin.marketCap)}</Text>
-                    </Text>
-                    <Text display="flex">
-                      Daily Change:{' '}
-                      <Text ml=".5rem"> {millify(coin.change)}</Text>%
-                    </Text>
+                  <Stack
+                    px="2rem"
+                    pt="1rem"
+                    fontSize={{ xl: '1.2rem', md: '' }}
+                  >
+                    <Text pr=".2rem">Price: {millify(coin.price)}</Text>
+
+                    <Text>Market Cap: {millify(coin.marketCap)}</Text>
+
+                    <Text>Daily Change: {millify(coin.change)}%</Text>
                   </Stack>
                 </Box>
               </NextLink>
@@ -109,7 +109,6 @@ const CryptocurrenciesTemplate = ({ coins, home, homeCoins }) => {
                   py="1rem"
                   cursor="pointer"
                   color="white"
-                  border={`1px solid ${toggleBorder}`}
                   boxShadow="md"
                   _hover={{
                     transform: 'scale(1.05)'
@@ -130,17 +129,11 @@ const CryptocurrenciesTemplate = ({ coins, home, homeCoins }) => {
                   </Stack>
 
                   <Stack pl="2rem" pt="1rem">
-                    <Text display="flex">
-                      Price: <Text ml=".5rem"> {millify(coin.price)}</Text>
-                    </Text>
-                    <Text display="flex">
-                      Market Cap:{' '}
-                      <Text ml=".5rem"> {millify(coin.marketCap)}</Text>
-                    </Text>
-                    <Text display="flex">
-                      Daily Change:{' '}
-                      <Text ml=".5rem"> {millify(coin.change)}</Text>%
-                    </Text>
+                    <Text pr=".2rem">Price: {millify(coin.price)}</Text>
+
+                    <Text>Market Cap: {millify(coin.marketCap)}</Text>
+
+                    <Text>Daily Change: {millify(coin.change)}%</Text>
                   </Stack>
                 </Box>
               </NextLink>

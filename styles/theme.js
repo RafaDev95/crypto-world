@@ -1,18 +1,14 @@
 import { extendTheme } from '@chakra-ui/react'
-import { mode } from '@chakra-ui/theme-tools'
+import { mode, createBreakpoints } from '@chakra-ui/theme-tools'
 
 const styles = {
   global: props => ({
     body: {
-      bg: mode('#e2e8f0', '#030311')(props),
+      bg: mode('bgLight', 'bgDark')(props),
       color: mode('black', 'white')(props)
     }
   })
 }
-
-//'#161c25'
-// '#202023'
-//#145088
 
 const components = {
   Heading: {
@@ -34,13 +30,6 @@ const components = {
       }
     }
   }
-
-  // Link: {
-  //   baseStyle: props => ({
-  //     color: mode('#3d7aed', '#ff63c3')(props),
-  //     textUnderLineOffset: 3
-  //   })
-  // }
 }
 
 const fonts = {
@@ -49,23 +38,12 @@ const fonts = {
 }
 
 const colors = {
-  glassTeal: '#88ccca',
-  textPrimary: '#000',
-  bgDark: '#161c25',
-  bgLight: '#f9f9f9',
-  bgSecondary: '#F9F9F9',
-  blue2: '#0071db',
-  blueLink: '#1280e7',
+  textSecondary: '#d4d3d3',
+  bgDark: '#030311',
+  bgLight: '#e2e8f0',
+  blue1: '#0071db',
   boxLM: '#394c64',
-  boxDM: '#1280e7',
-  lightBlue: '#e6f7ff',
-  border: '#d9d9d9',
-  darkModePanel: '#3e3e4140',
-  a: '#040609',
-  b: '#020306',
-  c: '#3540b6',
-  d: '#46495b',
-  e: '#788794'
+  boxDM: '#1280e7'
 }
 
 const config = {
@@ -73,12 +51,21 @@ const config = {
   useSystemColorMode: true
 }
 
+const breakpoints = createBreakpoints({
+  sm: '425px',
+  md: '768px',
+  lg: '1024px',
+  xl: '1440px',
+  '2xl': '1800px'
+})
+
 const theme = extendTheme({
   config,
   styles,
   components,
   colors,
-  fonts
+  fonts,
+  breakpoints
 })
 
 export default theme

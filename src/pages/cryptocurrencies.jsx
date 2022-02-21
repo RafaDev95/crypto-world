@@ -8,7 +8,7 @@ const cryptocurrencies = ({ coins }) => {
 export default cryptocurrencies
 
 export async function getStaticProps() {
-  const coinsResponse = await fetchCoins
+  const coinsResponse = await fetchCoins(100)
   const json = await coinsResponse?.json()
 
   return {
@@ -20,8 +20,8 @@ export async function getStaticProps() {
 }
 
 // export async function getServerSideProps() {
-//   const coinsResponse = await fetchCoins
-//   const json = await coinsResponse.json()
+//   const coinsResponse = await fetchCoins(100)
+// const json = await coinsResponse?.json()
 
 //   return {
 //     props: {
