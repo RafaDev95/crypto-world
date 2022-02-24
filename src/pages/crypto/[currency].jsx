@@ -50,7 +50,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      coin: coinJson?.data?.coin
+      token: coinJson?.data
     }
   }
 }

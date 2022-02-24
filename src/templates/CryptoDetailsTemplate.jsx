@@ -43,7 +43,7 @@ import {
 import DropdownMenu from 'components/DropdownMenu'
 import LineChart from 'components/LineChart'
 
-const CryptoDetailsTemplate = ({ coin }) => {
+const CryptoDetailsTemplate = ({ token }) => {
   const router = useRouter()
   const toggleTextColor = useColorModeValue('black', 'textSecondary')
   const toggleBgColor = useColorModeValue('boxLM', '#02021f')
@@ -61,7 +61,7 @@ const CryptoDetailsTemplate = ({ coin }) => {
       .then(response => setCoinHistory(response))
   }, [timePeriod])
 
-  if (!coin) {
+  if (!token) {
     return (
       <Flex h="100%" justifyContent="center" alignItems="center">
         <Spinner color="boxDM" size="xl" thickness="4px" emptyColor="white" />
@@ -69,17 +69,19 @@ const CryptoDetailsTemplate = ({ coin }) => {
     )
   }
 
+  const coin = token?.coin
+
   const volume = coin?.['24hVolume']
 
   const stats = [
     {
       title: 'Price to USD',
-      value: `$ ${coin.price && millify(coin.price)}`,
+      value: `$ ${coin?.price && millify(coin?.price)}`,
       icon: <HiOutlineCurrencyDollar />
     },
     {
       title: 'Rank',
-      value: coin.rank,
+      value: coin?.rank,
       icon: <AiOutlineNumber />
     },
     {
@@ -89,7 +91,7 @@ const CryptoDetailsTemplate = ({ coin }) => {
     },
     {
       title: 'Market Cap',
-      value: `$ ${coin.marketCap && millify(coin.marketCap)}`,
+      value: `$ ${coin?.marketCap && millify(coin?.marketCap)}`,
       icon: <HiOutlineCurrencyDollar />
     },
     {
@@ -212,11 +214,11 @@ const CryptoDetailsTemplate = ({ coin }) => {
               justifyContent="end"
             >
               <Text mr="1rem" fontSize="1.8rem">
-                {formatPrice(coin.price)}{' '}
+                {formatPrice(coin?.price)}{' '}
               </Text>
               <Text
                 as="span"
-                bg={coin.change >= 0 ? '#16C784' : 'red'}
+                bg={coin?.change >= 0 ? '#16C784' : 'red'}
                 py=".2rem"
                 rounded="md"
                 display="flex"
@@ -224,12 +226,12 @@ const CryptoDetailsTemplate = ({ coin }) => {
                 w="80px"
                 justifyContent="space-evenly"
               >
-                {coin.change >= 0 ? <HiChevronUp /> : <HiChevronDown />}
-                {Number(coin.change).toFixed(2)}%{' '}
+                {coin?.change >= 0 ? <HiChevronUp /> : <HiChevronDown />}
+                {Number(coin?.change).toFixed(2)}%{' '}
               </Text>
             </Box>
             <Text color={toggleTextColor}>
-              {Number(coin.btcPrice).toFixed(2)} BTC
+              {Number(coin?.btcPrice).toFixed(2)} BTC
             </Text>
           </Flex>
         </Stack>
