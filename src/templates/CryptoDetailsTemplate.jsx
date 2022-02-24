@@ -128,10 +128,10 @@ const CryptoDetailsTemplate = ({ token }) => {
     },
     {
       title: 'Total Supply',
-      value: 5,
-      // parseToken?.data?.coin?.supply?.total === null
-      //   ? 'Not avaliable'
-      //   : `$ ${formatPrice(parseToken?.data?.coin?.supply?.total)}`,
+      value:
+        parseToken?.data?.coin?.supply?.total === null
+          ? 'Not avaliable'
+          : `$ ${formatPrice(parseToken?.data?.coin?.supply?.total)}`,
       icon: <AiOutlineExclamationCircle />
     },
     {
@@ -144,7 +144,7 @@ const CryptoDetailsTemplate = ({ token }) => {
     }
   ]
 
-  const sourceCodeUrl = coin?.links?.filter(link => link.type === 'github')
+  // const sourceCodeUrl = coin?.links?.filter(link => link.type === 'github')
 
   return (
     <Container variant="page-container">
@@ -195,7 +195,8 @@ const CryptoDetailsTemplate = ({ token }) => {
             </NextLink>
             <NextLink
               passHref
-              href={`${sourceCodeUrl[0] ? sourceCodeUrl[0].url : '/'}`}
+              // href={`${sourceCodeUrl[0] ? sourceCodeUrl[0].url : '/'}`}
+              href="/"
             >
               <Link
                 target="_blank"
