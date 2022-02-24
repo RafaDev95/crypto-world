@@ -1,6 +1,6 @@
 import HTMLReactParser from 'html-react-parser'
 import NextLink from 'next/link'
-import millify from 'millify'
+// import millify from 'millify'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import {
@@ -296,7 +296,7 @@ const CryptoDetailsTemplate = ({ token }) => {
       </Select>
       <LineChart
         coinHistory={coinHistory}
-        currentPrice={millify(coin?.price)}
+        currentPrice={formatPrice(coin?.price)}
         coinName={coin?.name}
       />
       <Box textAlign="center">
