@@ -69,7 +69,9 @@ const CryptoDetailsTemplate = ({ token }) => {
     )
   }
 
-  const coin = token?.coin
+  const parseToken = JSON.parse(token)
+
+  const coin = parseToken.coin
 
   const volume = coin?.['24hVolume']
 
