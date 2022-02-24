@@ -75,13 +75,12 @@ const CryptoDetailsTemplate = ({ token }) => {
 
   const volume = coin?.['24hVolume']
 
-  console.log(millify(coin?.price).toString())
-
   const stats = [
     {
       title: 'Price to USD',
       value: `$ ${
-        parseToken?.data?.coin?.price && millify(parseToken?.data?.coin?.price)
+        parseToken?.data?.coin?.price &&
+        formatPrice(parseToken?.data?.coin?.price)
       }`,
       icon: <HiOutlineCurrencyDollar />
     },
@@ -92,20 +91,20 @@ const CryptoDetailsTemplate = ({ token }) => {
     },
     {
       title: '24h Volume',
-      value: `$ ${volume && millify(volume)}`,
+      value: `$ ${volume && formatPrice(volume)}`,
       icon: <AiOutlineThunderbolt />
     },
     {
       title: 'Market Cap',
       value: `$ ${
         parseToken?.data?.coin?.marketCap &&
-        millify(parseToken?.data?.coin?.marketCap)
+        formatPrice(parseToken?.data?.coin?.marketCap)
       }`,
       icon: <HiOutlineCurrencyDollar />
     },
     {
       title: 'All-time-high',
-      value: `$ ${millify(parseToken?.data?.coin?.allTimeHigh.price)}`,
+      value: `$ ${formatPrice(parseToken?.data?.coin?.allTimeHigh.price)}`,
       icon: <AiOutlineTrophy />
     },
     {
@@ -132,14 +131,14 @@ const CryptoDetailsTemplate = ({ token }) => {
       value:
         parseToken?.data?.coin?.supply?.total === null
           ? 'Not avaliable'
-          : `$ ${millify(parseToken?.data?.coin?.supply?.total)}`,
+          : `$ ${formatPrice(parseToken?.data?.coin?.supply?.total)}`,
       icon: <AiOutlineExclamationCircle />
     },
     {
       title: 'Circulating Supply',
       value: `$ ${
         parseToken?.data?.coin?.supply?.circulating &&
-        millify(parseToken?.data?.coin?.supply?.circulating)
+        formatPrice(parseToken?.data?.coin?.supply?.circulating)
       }`,
       icon: <AiOutlineExclamationCircle />
     }
