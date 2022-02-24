@@ -32,8 +32,17 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const response = await fetchCoinById(params.currency)
-
+  const uuid = params?.currency
+  const response = await fetch(
+    `https://coinranking1.p.rapidapi.com/coin/${uuid}?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h`,
+    {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
+        'x-rapidapi-key': '22cc035b33mshdb6725419c68287p13a188jsnc3696352fb54'
+      }
+    }
+  )
   const coinJson = JSON.stringify(await response?.json())
 
   return {
@@ -43,18 +52,8 @@ export async function getStaticProps({ params }) {
   }
 }
 
+// const coinResponse = await fetchCoinById(params.currency)
 // const coinJson = await coinResponse?.json()
 // const coin = coinJson?.data.coin
-// const uuid = params?.currency
-// const response = await fetch(
-//   `https://coinranking1.p.rapidapi.com/coin/${uuid}?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h`,
-//   {
-//     method: 'GET',
-//     headers: {
-//       'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
-//       'x-rapidapi-key': '22cc035b33mshdb6725419c68287p13a188jsnc3696352fb54'
-//     }
-//   }
-// )
 
 // const teste = JSON.stringify(coinJson?.data)
