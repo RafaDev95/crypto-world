@@ -98,7 +98,7 @@ const CryptoDetailsTemplate = ({ token }) => {
     },
     {
       title: 'All-time-high',
-      value: `$ ${millify(coin.allTimeHigh.price)}`,
+      value: `$ ${millify(coin?.allTimeHigh.price)}`,
       icon: <AiOutlineTrophy />
     },
     {
@@ -133,7 +133,7 @@ const CryptoDetailsTemplate = ({ token }) => {
     }
   ]
 
-  const sourceCodeUrl = coin?.links.filter(link => link.type === 'github')
+  const sourceCodeUrl = coin?.links?.filter(link => link.type === 'github')
 
   return (
     <Container variant="page-container">
@@ -207,7 +207,7 @@ const CryptoDetailsTemplate = ({ token }) => {
         <Stack>
           <Flex flexDir="column" w="100%" alignItems="end" pr="1rem">
             <Text fontSize=".9rem">
-              {coin.name} Price ({coin.symbol})
+              {coin?.name} Price ({coin?.symbol})
             </Text>
             <Box
               w="100%"
