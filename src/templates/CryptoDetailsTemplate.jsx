@@ -1,6 +1,6 @@
 import HTMLReactParser from 'html-react-parser'
 import NextLink from 'next/link'
-// import millify from 'millify'
+import millify from 'millify'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import {
@@ -79,8 +79,7 @@ const CryptoDetailsTemplate = ({ token }) => {
     {
       title: 'Price to USD',
       value: `$ ${
-        parseToken?.data?.coin?.price &&
-        formatPrice(parseToken?.data?.coin?.price)
+        parseToken?.data?.coin?.price && millify(parseToken?.data?.coin?.price)
       }`,
       icon: <HiOutlineCurrencyDollar />
     },
@@ -91,20 +90,20 @@ const CryptoDetailsTemplate = ({ token }) => {
     },
     {
       title: '24h Volume',
-      value: `$ ${volume && formatPrice(volume)}`,
+      value: `$ ${volume && millify(volume)}`,
       icon: <AiOutlineThunderbolt />
     },
     {
       title: 'Market Cap',
       value: `$ ${
         parseToken?.data?.coin?.marketCap &&
-        formatPrice(parseToken?.data?.coin?.marketCap)
+        millify(parseToken?.data?.coin?.marketCap)
       }`,
       icon: <HiOutlineCurrencyDollar />
     },
     {
       title: 'All-time-high',
-      value: `$ ${formatPrice(parseToken?.data?.coin?.allTimeHigh.price)}`,
+      value: `$ ${millify(parseToken?.data?.coin?.allTimeHigh.price)}`,
       icon: <AiOutlineTrophy />
     },
     {
@@ -129,22 +128,22 @@ const CryptoDetailsTemplate = ({ token }) => {
     {
       title: 'Total Supply',
       value:
-        parseToken?.data?.coin?.supply?.total === null
+        parseToken?.data?.coin?.supply?.total <= 0
           ? 'Not avaliable'
-          : `$ ${formatPrice(parseToken?.data?.coin?.supply?.total)}`,
+          : `$ ${millify(parseToken?.data?.coin?.supply?.total)}`,
       icon: <AiOutlineExclamationCircle />
     },
     {
       title: 'Circulating Supply',
       value: `$ ${
         parseToken?.data?.coin?.supply?.circulating &&
-        formatPrice(parseToken?.data?.coin?.supply?.circulating)
+        millify(parseToken?.data?.coin?.supply?.circulating)
       }`,
       icon: <AiOutlineExclamationCircle />
     }
   ]
 
-  // const sourceCodeUrl = coin?.links?.filter(link => link.type === 'github')
+  const sourceCodeUrl = coin?.links?.filter(link => link.type === 'github')
 
   return (
     <Container variant="page-container">
@@ -195,8 +194,7 @@ const CryptoDetailsTemplate = ({ token }) => {
             </NextLink>
             <NextLink
               passHref
-              // href={`${sourceCodeUrl[0] ? sourceCodeUrl[0].url : '/'}`}
-              href="/"
+              href={`${sourceCodeUrl[0] ? sourceCodeUrl[0].url : '/'}`}
             >
               <Link
                 target="_blank"
@@ -296,7 +294,7 @@ const CryptoDetailsTemplate = ({ token }) => {
       </Select>
       <LineChart
         coinHistory={coinHistory}
-        currentPrice={formatPrice(coin?.price)}
+        currentPrice={millify(coin?.price)}
         coinName={coin?.name}
       />
       <Box textAlign="center">
