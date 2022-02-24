@@ -47,10 +47,11 @@ export async function getStaticProps({ params }) {
     }
   )
   const coinJson = await response?.json()
+  const teste = JSON.stringify(coinJson?.data)
 
   return {
     props: {
-      token: JSON.stringify(coinJson?.data)
+      token: teste
     }
   }
 }
