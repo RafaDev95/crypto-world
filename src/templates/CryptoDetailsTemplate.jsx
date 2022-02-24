@@ -128,10 +128,10 @@ const CryptoDetailsTemplate = ({ token }) => {
     },
     {
       title: 'Total Supply',
-      value:
-        parseToken?.data?.coin?.supply?.total === null
-          ? 'Not avaliable'
-          : `$ ${formatPrice(parseToken?.data?.coin?.supply?.total)}`,
+      value: 5,
+      // parseToken?.data?.coin?.supply?.total === null
+      //   ? 'Not avaliable'
+      //   : `$ ${formatPrice(parseToken?.data?.coin?.supply?.total)}`,
       icon: <AiOutlineExclamationCircle />
     },
     {
