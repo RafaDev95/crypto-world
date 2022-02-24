@@ -5,7 +5,10 @@ import { useRouter } from 'next/router'
 const CryptoDetails = ({ coin }) => {
   const router = useRouter()
 
-  if (router.isFallback) return null
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
+
   return <CryptoDetailsTemplate coin={coin} />
 }
 
@@ -23,8 +26,8 @@ export async function getStaticPaths() {
   })
 
   return {
-    paths: paths && paths,
-    fallback: false
+    paths,
+    fallback: true
   }
 }
 
