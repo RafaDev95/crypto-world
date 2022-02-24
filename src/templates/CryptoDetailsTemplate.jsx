@@ -75,15 +75,19 @@ const CryptoDetailsTemplate = ({ token }) => {
 
   const volume = coin?.['24hVolume']
 
+  console.log(millify(coin?.price).toString())
+
   const stats = [
     {
       title: 'Price to USD',
-      value: `$ ${coin?.price && millify(coin?.price)}`,
+      value: `$ ${
+        parseToken?.data?.coin?.price && millify(parseToken?.data?.coin?.price)
+      }`,
       icon: <HiOutlineCurrencyDollar />
     },
     {
       title: 'Rank',
-      value: coin?.rank,
+      value: parseToken?.data?.coin?.rank,
       icon: <AiOutlineNumber />
     },
     {
@@ -93,41 +97,49 @@ const CryptoDetailsTemplate = ({ token }) => {
     },
     {
       title: 'Market Cap',
-      value: `$ ${coin?.marketCap && millify(coin?.marketCap)}`,
+      value: `$ ${
+        parseToken?.data?.coin?.marketCap &&
+        millify(parseToken?.data?.coin?.marketCap)
+      }`,
       icon: <HiOutlineCurrencyDollar />
     },
     {
       title: 'All-time-high',
-      value: `$ ${millify(coin?.allTimeHigh.price)}`,
+      value: `$ ${millify(parseToken?.data?.coin?.allTimeHigh.price)}`,
       icon: <AiOutlineTrophy />
     },
     {
       title: 'Number Of Markets',
-      value: coin?.numberOfMarkets,
+      value: parseToken?.data?.coin?.numberOfMarkets,
       icon: <AiOutlineFundProjectionScreen />
     },
     {
       title: 'Number Of Exchanges',
-      value: coin?.numberOfExchanges,
+      value: parseToken?.data?.coin?.numberOfExchanges,
       icon: <AiOutlineMoneyCollect />
     },
     {
       title: 'Aprroved Supply',
-      value: coin?.supply?.confirmed ? <AiOutlineCheck /> : <AiOutlineStop />,
+      value: parseToken?.data?.coin?.supply?.confirmed ? (
+        <AiOutlineCheck />
+      ) : (
+        <AiOutlineStop />
+      ),
       icon: <AiOutlineExclamationCircle />
     },
     {
       title: 'Total Supply',
       value:
-        coin?.supply?.total === null
+        parseToken?.data?.coin?.supply?.total === null
           ? 'Not avaliable'
-          : `$ ${millify(coin?.supply?.total)}`,
+          : `$ ${millify(parseToken?.data?.coin?.supply?.total)}`,
       icon: <AiOutlineExclamationCircle />
     },
     {
       title: 'Circulating Supply',
       value: `$ ${
-        coin?.supply?.circulating && millify(coin?.supply?.circulating)
+        parseToken?.data?.coin?.supply?.circulating &&
+        millify(parseToken?.data?.coin?.supply?.circulating)
       }`,
       icon: <AiOutlineExclamationCircle />
     }
