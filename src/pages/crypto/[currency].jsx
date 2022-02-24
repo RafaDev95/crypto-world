@@ -1,7 +1,11 @@
 import CryptoDetailsTemplate from 'templates/CryptoDetailsTemplate'
 import { fetchCoins, fetchCoinById } from 'utils/fetchs'
+import { useRouter } from 'next/router'
 
 const CryptoDetails = ({ coin }) => {
+  const router = useRouter()
+
+  if (router.isFallback) return null
   return <CryptoDetailsTemplate coin={coin} />
 }
 
