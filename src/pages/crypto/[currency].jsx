@@ -2,14 +2,14 @@ import CryptoDetailsTemplate from 'templates/CryptoDetailsTemplate'
 import { fetchCoins, fetchCoinById } from 'utils/fetchs'
 import { useRouter } from 'next/router'
 
-const CryptoDetails = props => {
+const CryptoDetails = ({ token }) => {
   const router = useRouter()
 
   if (router.isFallback) {
     return <div>Loading...</div>
   }
 
-  return <CryptoDetailsTemplate {...props} />
+  return <CryptoDetailsTemplate token={token} />
 }
 
 export default CryptoDetails
@@ -32,26 +32,29 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  // const coinResponse = await fetchCoinById(params.currency)
-  // const coinJson = await coinResponse?.json()
-  // const coin = coinJson?.data.coin
-  const uuid = params?.currency
-  const response = await fetch(
-    `https://coinranking1.p.rapidapi.com/coin/${uuid}?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h`,
-    {
-      method: 'GET',
-      headers: {
-        'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
-        'x-rapidapi-key': '22cc035b33mshdb6725419c68287p13a188jsnc3696352fb54'
-      }
-    }
-  )
-  const coinJson = await response?.json()
-  const teste = JSON.stringify(coinJson?.data)
+  const response = await fetchCoinById(params.currency)
+
+  const coinJson = JSON.stringify(await response?.json())
 
   return {
     props: {
-      token: teste
+      token: coinJson
     }
   }
 }
+
+// const coinJson = await coinResponse?.json()
+// const coin = coinJson?.data.coin
+// const uuid = params?.currency
+// const response = await fetch(
+//   `https://coinranking1.p.rapidapi.com/coin/${uuid}?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h`,
+//   {
+//     method: 'GET',
+//     headers: {
+//       'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
+//       'x-rapidapi-key': '22cc035b33mshdb6725419c68287p13a188jsnc3696352fb54'
+//     }
+//   }
+// )
+
+// const teste = JSON.stringify(coinJson?.data)
