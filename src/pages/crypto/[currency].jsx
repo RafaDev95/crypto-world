@@ -2,14 +2,14 @@ import CryptoDetailsTemplate from 'templates/CryptoDetailsTemplate'
 import { fetchCoins, fetchCoinById } from 'utils/fetchs'
 import { useRouter } from 'next/router'
 
-const CryptoDetails = ({ coin }) => {
+const CryptoDetails = props => {
   const router = useRouter()
 
   if (router.isFallback) {
     return <div>Loading...</div>
   }
 
-  return <CryptoDetailsTemplate coin={coin} />
+  return <CryptoDetailsTemplate {...props} />
 }
 
 export default CryptoDetails
@@ -34,11 +34,11 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const coinResponse = await fetchCoinById(params.currency)
   const coinJson = await coinResponse?.json()
-  const coin = coinJson?.data.coin
+  // const coin = coinJson?.data.coin
 
   return {
     props: {
-      coin: coin && coin
+      coin: coinJson?.data.coin
     }
   }
 }
