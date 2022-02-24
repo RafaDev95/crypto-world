@@ -35,8 +35,9 @@ export async function getStaticProps({ params }) {
   // const coinResponse = await fetchCoinById(params.currency)
   // const coinJson = await coinResponse?.json()
   // const coin = coinJson?.data.coin
+  const uuid = params?.currency
   const response = await fetch(
-    `https://coinranking1.p.rapidapi.com/coin/${params.currency}?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h`,
+    `https://coinranking1.p.rapidapi.com/coin/${uuid}?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h`,
     {
       method: 'GET',
       headers: {
@@ -49,7 +50,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      coin: coinJson?.data.coin
+      coin: coinJson?.data?.coin
     }
   }
 }
