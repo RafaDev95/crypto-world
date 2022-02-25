@@ -144,9 +144,6 @@ const CryptoDetailsTemplate = ({ token }) => {
 
   const sourceCodeUrl = coin?.links?.filter(link => link.type === 'github')
 
-  var parser = new DOMParser()
-  var htmlDoc = parser.parseFromString(coin?.description, 'text/xml')
-
   return (
     <Container variant="page-container">
       <SimpleGrid columns={2}>
