@@ -1,6 +1,4 @@
-import HTMLReactParser from 'html-react-parser'
 import NextLink from 'next/link'
-import millify from 'millify'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import {
@@ -18,7 +16,7 @@ import {
   useColorModeValue
 } from '@chakra-ui/react'
 
-import formatPrice from '../utils/format-price'
+import { formatPrice, formatBigNumbers } from '../utils/format-price'
 
 import { fetchCoinHistory } from 'utils/fetchs'
 
@@ -79,7 +77,8 @@ const CryptoDetailsTemplate = ({ token }) => {
     {
       title: 'Price to USD',
       value: `$ ${
-        parseToken?.data?.coin?.price && millify(parseToken?.data?.coin?.price)
+        parseToken?.data?.coin?.price &&
+        formatBigNumbers(parseToken?.data?.coin?.price)
       }`,
       icon: <HiOutlineCurrencyDollar />
     },
@@ -90,20 +89,20 @@ const CryptoDetailsTemplate = ({ token }) => {
     },
     {
       title: '24h Volume',
-      value: `$ ${volume && millify(volume)}`,
+      value: `$ ${volume && formatBigNumbers(volume)}`,
       icon: <AiOutlineThunderbolt />
     },
     {
       title: 'Market Cap',
       value: `$ ${
         parseToken?.data?.coin?.marketCap &&
-        millify(parseToken?.data?.coin?.marketCap)
+        formatBigNumbers(parseToken?.data?.coin?.marketCap)
       }`,
       icon: <HiOutlineCurrencyDollar />
     },
     {
       title: 'All-time-high',
-      value: `$ ${millify(parseToken?.data?.coin?.allTimeHigh.price)}`,
+      value: `$ ${formatBigNumbers(parseToken?.data?.coin?.allTimeHigh.price)}`,
       icon: <AiOutlineTrophy />
     },
     {
@@ -130,20 +129,23 @@ const CryptoDetailsTemplate = ({ token }) => {
       value:
         parseToken?.data?.coin?.supply?.total <= 0
           ? 'Not avaliable'
-          : `$ ${millify(parseToken?.data?.coin?.supply?.total)}`,
+          : `$ ${formatBigNumbers(parseToken?.data?.coin?.supply?.total)}`,
       icon: <AiOutlineExclamationCircle />
     },
     {
       title: 'Circulating Supply',
       value: `$ ${
         parseToken?.data?.coin?.supply?.circulating &&
-        millify(parseToken?.data?.coin?.supply?.circulating)
+        formatBigNumbers(parseToken?.data?.coin?.supply?.circulating)
       }`,
       icon: <AiOutlineExclamationCircle />
     }
   ]
 
   const sourceCodeUrl = coin?.links?.filter(link => link.type === 'github')
+
+  var parser = new DOMParser()
+  var htmlDoc = parser.parseFromString(coin?.description, 'text/xml')
 
   return (
     <Container variant="page-container">
@@ -294,14 +296,14 @@ const CryptoDetailsTemplate = ({ token }) => {
       </Select>
       <LineChart
         coinHistory={coinHistory}
-        currentPrice={millify(coin?.price)}
+        currentPrice={formatBigNumbers(coin?.price)}
         coinName={coin?.name}
       />
       <Box textAlign="center">
         <Heading color="blue1" py="1rem">
           What is {coin?.name}
         </Heading>
-        {HTMLReactParser(coin?.description)}
+        <Box dangerouslySetInnerHTML={{ __html: coin?.description }} />
       </Box>
     </Container>
   )

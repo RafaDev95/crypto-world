@@ -9,12 +9,12 @@ import {
   Link
 } from '@chakra-ui/react'
 
+import { formatBigNumbers } from 'utils/format-price'
+
 import CryptocurrenciesTemplate from 'templates/CryptocurrenciesTemplate'
 import NewsTemplate from 'templates/NewsTemplate'
 
 import NextLink from 'next/link'
-
-import millify from 'millify'
 
 const HomepageTemplate = ({
   totalCryptocurrencies,
@@ -84,7 +84,7 @@ const HomepageTemplate = ({
                   background: 'white'
                 }}
               >
-                {millify(info.amount)}
+                {formatBigNumbers(info.amount)}
               </Text>
             </Box>
           ))}

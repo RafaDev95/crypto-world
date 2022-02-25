@@ -1,5 +1,6 @@
-import millify from 'millify'
 import NextLink from 'next/link'
+
+import { formatBigNumbers, formatPrice } from '../utils/format-price'
 
 import {
   SimpleGrid,
@@ -91,11 +92,11 @@ const CryptocurrenciesTemplate = ({ coins, home, homeCoins }) => {
                     pt="1rem"
                     fontSize={{ xl: '1.2rem', md: '' }}
                   >
-                    <Text pr=".2rem">Price: ${millify(coin.price)}</Text>
+                    <Text pr=".2rem">Price: {formatPrice(coin.price)}</Text>
 
-                    <Text>Market Cap: {millify(coin.marketCap)}</Text>
+                    <Text>Market Cap: {formatBigNumbers(coin.marketCap)}</Text>
 
-                    <Text>Daily Change: {millify(coin.change)}%</Text>
+                    <Text>Daily Change: {formatBigNumbers(coin.change)}%</Text>
                   </Stack>
                 </Box>
               </NextLink>
@@ -128,11 +129,11 @@ const CryptocurrenciesTemplate = ({ coins, home, homeCoins }) => {
                   </Stack>
 
                   <Stack pl="2rem" pt="1rem">
-                    <Text pr=".2rem">Price: ${millify(coin.price)}</Text>
+                    <Text pr=".2rem">Price: {formatPrice(coin.price)}</Text>
 
-                    <Text>Market Cap: {millify(coin.marketCap)}</Text>
+                    <Text>Market Cap: {formatBigNumbers(coin.marketCap)}</Text>
 
-                    <Text>Daily Change: {millify(coin.change)}%</Text>
+                    <Text>Daily Change: {formatBigNumbers(coin.change)}%</Text>
                   </Stack>
                 </Box>
               </NextLink>
