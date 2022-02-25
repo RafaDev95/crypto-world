@@ -1,5 +1,5 @@
 import CryptoDetailsTemplate from 'templates/CryptoDetailsTemplate'
-import { fetchCoins, fetchCoinById } from 'utils/fetchs'
+import { fetchCoins } from 'utils/fetchs'
 import { useRouter } from 'next/router'
 
 const CryptoDetails = ({ token }) => {

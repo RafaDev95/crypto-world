@@ -12,7 +12,6 @@ import { useRouter } from 'next/router'
 
 import {
   AiOutlineHome,
-  AiOutlineMoneyCollect,
   AiOutlineBulb,
   AiOutlineFundProjectionScreen
 } from 'react-icons/ai'
