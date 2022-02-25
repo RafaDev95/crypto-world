@@ -142,7 +142,9 @@ const CryptoDetailsTemplate = ({ token }) => {
     }
   ]
 
-  const sourceCodeUrl = coin?.links?.filter(link => link.type === 'github')
+  const sourceCodeUrl = coin?.links
+    ?.filter(link => link.type === 'github')
+    .map(link => link.url)
 
   return (
     <Container variant="page-container">
@@ -191,10 +193,7 @@ const CryptoDetailsTemplate = ({ token }) => {
                 Website {<HiExternalLink style={{ marginLeft: '.6rem' }} />}
               </Link>
             </NextLink>
-            <NextLink
-              passHref
-              href={`${sourceCodeUrl[0] ? sourceCodeUrl[0].url : '/'}`}
-            >
+            <NextLink passHref href={`${sourceCodeUrl ? sourceCodeUrl : '/'}`}>
               <Link
                 target="_blank"
                 py=".3rem"
