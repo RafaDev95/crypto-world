@@ -20,8 +20,8 @@ const DropdownMenu = ({ menuIcon, coin }) => {
   )
 
   const communties = redditFilter
-    .concat(telegramFilter)
-    .concat(bitcointalkFilter)
+    ?.concat(telegramFilter)
+    ?.concat(bitcointalkFilter)
 
   return (
     <Menu isOpen={isOpen}>
