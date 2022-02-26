@@ -16,35 +16,27 @@ import NewsTemplate from 'templates/NewsTemplate'
 
 import NextLink from 'next/link'
 
-const HomepageTemplate = ({
-  totalCryptocurrencies,
-  totalMarkets,
-  totalExchanges,
-  totalMarketCap,
-  total24hVolume,
-  coins,
-  newsInfos
-}) => {
+const HomepageTemplate = ({ coins, newsInfos, coinsData }) => {
   const cryptoInfos = [
     {
       title: 'Total Cryptocurrencies',
-      amount: totalCryptocurrencies
+      amount: coinsData?.totalCoins
     },
     {
       title: 'Total Market Cap',
-      amount: totalMarketCap
+      amount: coinsData?.totalMarketCap
     },
     {
       title: 'Total Markets',
-      amount: totalMarkets
+      amount: coinsData?.totalMarkets
     },
     {
       title: 'Total Exchanges',
-      amount: totalExchanges
+      amount: coinsData?.totalExchanges
     },
     {
       title: 'Total 24h Volume',
-      amount: total24hVolume
+      amount: coinsData?.total24hVolume
     }
   ]
 

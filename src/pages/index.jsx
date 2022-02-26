@@ -2,25 +2,14 @@ import { fetchNews, fetchCoins } from 'utils/fetchs'
 
 import HomepageTemplate from 'templates/HomepageTemplate'
 
-const Index = ({
-  totalCryptocurrencies,
-  totalMarkets,
-  totalExchanges,
-  totalMarketCap,
-  total24hVolume,
-  coins,
-  newsInfos
-}) => {
+const Index = props => {
   return (
     <>
       <HomepageTemplate
-        totalCryptocurrencies={totalCryptocurrencies}
-        totalMarkets={totalMarkets}
-        totalExchanges={totalExchanges}
-        totalMarketCap={totalMarketCap}
-        total24hVolume={total24hVolume}
-        coins={coins}
-        newsInfos={newsInfos}
+        {...props}
+        // coins={coins}
+        // newsInfos={newsInfos}
+        // coinsData={coinsData}
       />
     </>
   )
@@ -40,12 +29,8 @@ export async function getStaticProps() {
     revalidate: 60 * 60 * 5,
     props: {
       newsInfos,
-      coins: coinsJson?.data.coins,
-      totalCryptocurrencies: coinsData.totalCoins,
-      totalMarkets: coinsData.totalMarkets,
-      totalExchanges: coinsData.totalExchanges,
-      totalMarketCap: coinsData.totalMarketCap,
-      total24hVolume: coinsData.total24hVolume
+      coinsData,
+      coins: coinsJson?.data.coins
     }
   }
 }
