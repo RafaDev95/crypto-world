@@ -177,7 +177,7 @@ const CryptoDetailsTemplate = ({ token }) => {
           <Flex w="370px" justifyContent="space-between">
             <DropdownMenu menuIcon={<HiUserGroup />} coin={coin} />
 
-            <NextLink passHref href={coin?.websiteUrl}>
+            <NextLink passHref href={coin?.websiteUrl ?? '/'}>
               <Link
                 target="_blank"
                 py=".3rem"
@@ -193,7 +193,7 @@ const CryptoDetailsTemplate = ({ token }) => {
                 Website {<HiExternalLink style={{ marginLeft: '.6rem' }} />}
               </Link>
             </NextLink>
-            <NextLink passHref href={`${sourceCodeUrl ? sourceCodeUrl : '/'}`}>
+            <NextLink passHref href={`${sourceCodeUrl ?? '/'}`}>
               <Link
                 target="_blank"
                 py=".3rem"
