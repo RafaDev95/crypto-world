@@ -1,15 +1,12 @@
 import {
   Container,
-  Text,
   Flex,
   Image,
   Stack,
   Link,
   useColorModeValue,
   Heading,
-  IconButton,
-  Slide,
-  useDisclosure
+  IconButton
 } from '@chakra-ui/react'
 
 import { useRouter } from 'next/router'
@@ -28,7 +25,6 @@ import { AiOutlineMenuFold } from 'react-icons/ai'
 import Overlay from './Overlay'
 
 const Navbar = ({ activeMenu, setActiveMenu, screenSize }) => {
-  const { isOpen, onToggle } = useDisclosure()
   const router = useRouter()
 
   const smallScreen = screenSize <= 900
