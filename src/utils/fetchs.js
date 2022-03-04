@@ -6,7 +6,7 @@ export const fetchNews = (category, count) =>
       headers: {
         'x-bingapis-sdk': 'true',
         'x-rapidapi-host': 'bing-news-search1.p.rapidapi.com',
-        'x-rapidapi-key': '22cc035b33mshdb6725419c68287p13a188jsnc3696352fb54'
+        'x-rapidapi-key': process.env.NEXT_RAPID_API_KEY
       }
     }
   )
@@ -18,7 +18,7 @@ export const fetchCoins = limit =>
       method: 'GET',
       headers: {
         'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
-        'x-rapidapi-key': '22cc035b33mshdb6725419c68287p13a188jsnc3696352fb54'
+        'x-rapidapi-key': process.env.NEXT_RAPID_API_KEY
       }
     }
   )
@@ -30,7 +30,7 @@ export const fetchCoinById = uuid =>
       method: 'GET',
       headers: {
         'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
-        'x-rapidapi-key': '22cc035b33mshdb6725419c68287p13a188jsnc3696352fb54'
+        'x-rapidapi-key': process.env.NEXT_RAPID_API_KEY
       }
     }
   )
@@ -42,7 +42,7 @@ export const fetchCoinHistory = (uuid, timePeriod) =>
       method: 'GET',
       headers: {
         'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
-        'x-rapidapi-key': '22cc035b33mshdb6725419c68287p13a188jsnc3696352fb54'
+        'x-rapidapi-key': process.env.NEXT_RAPID_API_KEY
       }
     }
   )

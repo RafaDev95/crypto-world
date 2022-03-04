@@ -213,26 +213,34 @@ const CryptoDetailsTemplate = ({ token }) => {
         </Stack>
 
         <Stack>
-          <Flex flexDir="column" w="100%" alignItems="end" pr="1rem">
+          <Flex
+            flexDir="column"
+            w="100%"
+            alignItems="end"
+            pr={{ md: '1rem', sm: '0' }}
+          >
             <Text fontSize=".9rem">
               {coin?.name} Price ({coin?.symbol})
             </Text>
             <Box
               w="100%"
               display="flex"
-              alignItems="center"
+              flexDir={{ md: 'row', sm: 'column' }}
+              alignItems={{ md: 'center', sm: 'end' }}
               justifyContent="end"
             >
-              <Text mr="1rem" fontSize="1.8rem">
+              <Text mr={{ md: '1rem', sm: '0' }} fontSize="1.8rem">
                 {formatPrice(coin?.price)}{' '}
               </Text>
               <Text
                 as="span"
                 bg={coin?.change >= 0 ? '#16C784' : 'red'}
                 py=".2rem"
+                my={{ md: '0', sm: '.5rem' }}
                 rounded="md"
                 display="flex"
                 alignItems="center"
+                color="white"
                 w="80px"
                 justifyContent="space-evenly"
               >

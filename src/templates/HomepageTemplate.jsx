@@ -60,21 +60,26 @@ const HomepageTemplate = ({ coins, newsInfos, coinsData }) => {
         >
           {cryptoInfos.map(info => (
             <Box display="flex" flexDir="column" key={info.title}>
-              <Text color="#b3b1b1" as="em">
+              <Text
+                color="#b3b1b1"
+                as="em"
+                fontSize={{ md: 'initial', sm: '.9rem' }}
+              >
                 {info.title}
               </Text>
               <Text
                 as="samp"
-                fontSize="1.5rem"
+                fontSize={{ md: '1.5rem', sm: '1.2rem' }}
                 color="white"
                 w="fit-content"
-                _after={{
-                  content: '""',
-                  display: 'block',
-                  width: '150px',
-                  height: '2px',
-                  background: 'white'
-                }}
+                // borderBottom="1px white solid"
+                // _after={{
+                //   content: '""',
+                //   display: 'block',
+                //   width: '105%',
+                //   height: '2px',
+                //   background: 'white'
+                // }}
               >
                 {formatBigNumbers(info.amount)}
               </Text>
@@ -98,11 +103,15 @@ const HomepageTemplate = ({ coins, newsInfos, coinsData }) => {
           justifyContent="space-between"
           mb="2rem"
         >
-          <Heading variant="section-title" as="h1" fontSize="1.4rem">
+          <Heading
+            variant="section-title"
+            as="h1"
+            fontSize={{ md: '1.4rem', sm: '1rem' }}
+          >
             Top 10 Cryptocurrencies in the world
           </Heading>
           <NextLink href="/cryptocurrencies" passHref>
-            <Link fontSize="1.4rem" color="blueLink">
+            <Link fontSize={{ md: '1.4rem', sm: '1rem' }} color="blueLink">
               Read more
             </Link>
           </NextLink>
@@ -115,11 +124,15 @@ const HomepageTemplate = ({ coins, newsInfos, coinsData }) => {
           justifyContent="space-between"
           mt="4rem"
         >
-          <Heading variant="section-title" as="h1" fontSize="1.4rem">
+          <Heading
+            variant="section-title"
+            as="h1"
+            fontSize={{ md: '1.4rem', sm: '1rem' }}
+          >
             Latest Crypto News
           </Heading>
           <NextLink href="/news" passHref>
-            <Link fontSize="1.4rem" color="blueLink">
+            <Link fontSize={{ md: '1.4rem', sm: '1rem' }} color="blueLink">
               Read more
             </Link>
           </NextLink>

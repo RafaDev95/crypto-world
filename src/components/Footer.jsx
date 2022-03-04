@@ -31,7 +31,13 @@ const Footer = () => {
 
   return (
     <Container maxW="100%" my="1rem">
-      <Flex alignItems="center" justifyContent="center" p="1rem" h="90px">
+      <Flex
+        alignItems="center"
+        justifyContent="center"
+        p="1rem"
+        h="90px"
+        flexDir={{ md: 'row', sm: 'column' }}
+      >
         <NextLink passHref href="/">
           <Link
             fontSize="1.1rem"
@@ -41,7 +47,7 @@ const Footer = () => {
             Crypto World
           </Link>
         </NextLink>
-        <Stack isInline spacing="2rem" ml="1rem">
+        <Stack isInline spacing={{ md: '2rem', sm: '.5rem' }} ml="1rem">
           {socials.map(social => (
             <NextLink key={social.title} passHref href={social.link}>
               <Link
@@ -49,7 +55,7 @@ const Footer = () => {
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                w="120px"
+                w={{ md: '120px', sm: '100px' }}
                 p=".4rem"
                 rounded="md"
                 fontSize="1rem"
