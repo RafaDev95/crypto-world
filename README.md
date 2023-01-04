@@ -10,7 +10,7 @@ Tecnologias usadas:
 - Api's - Rapid API: Coinranking e Bingnewssearch
 
 Inicialmente iria usar também millify para tratar os número enormes das crypto moedas e o REACT HTML PARSER para converter a descrição delas,
-mas na hora do deploy tive muita dor de cabeça devido a essas duas depenências e optei por refatorar o código e as removerem. 
+mas na hora do deploy tive muita dor de cabeça devido a essas duas depedências e optei por refatorar o código e as removerem. 
 
 Houve uma boa refatoração de código além da remoção das duas depenências, deixando o código mais limpo e mais reaproveitável, principalmente no *_app*
 com a criação do componente *Layout* 
